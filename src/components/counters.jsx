@@ -28,7 +28,7 @@ class Counters extends Component {
   }
 
   renderTags() {
-    let buttonClasses = this.getButtonClasses();
+    //let buttonClasses = this.getButtonClasses();
 
     if (this.state.tags.length === 0) return <p>There are no tags!</p>;
 
@@ -38,13 +38,13 @@ class Counters extends Component {
           <div key={tag.tag}>
             {tag.tag} {tag.counter}&nbsp;&nbsp;
             <button
-              className={buttonClasses}
+              className={this.getButtonClassesEnabled()}
               onClick={() => this.handleIncrement(tag)}
             >
               +
             </button>
             <button
-              className={buttonClasses}
+              className={this.getButtonClasses(tag)}
               onClick={() => this.handleDecrement(tag)}
             >
               -
@@ -92,8 +92,14 @@ class Counters extends Component {
     return "badge m-2 " + (count ? "bg-primary" : "bg-warning");
   }
 
-  getButtonClasses() {
+  getButtonClassesEnabled() {
     return "btn btn-secondary btn-sm";
+  }
+  getButtonClasses(product) {
+    if(product.counter === 0) {
+      return "btn btn-warning btn-sm";
+    }
+    return this.getButtonClassesEnabled();
   }
 }
 
