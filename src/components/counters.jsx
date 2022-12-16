@@ -2,11 +2,19 @@ import React, { Component } from "react";
 
 class Counters extends Component {
   state = {
-    count: 10,
-    tags: ["tag1", "tag2", "tag3"],
-    tags0: [],
+    count: 0,
+    tags: [ 
+        {tag: "tag1", counter: 0}, 
+        {tag: "tag2", counter: 0}, 
+        {tag: "tag3", counter: 0}, 
+        {tag: "tag4", counter: 0}, 
+        {tag: "tag5", counter: 0}, 
+        {tag: "tag6", counter: 0}, 
+        {tag: "tag7", counter: 0}, 
+    ],
   };
 
+    
   render() {
     let badgeClasses = this.getBadgeClasses();
 
@@ -27,8 +35,8 @@ class Counters extends Component {
     return (
       <div>
         {this.state.tags.map((tag) => (
-          <div key={tag}>
-            {tag}
+          <div key={tag.tag}>
+            {tag.tag} {tag.counter}&nbsp;&nbsp;
             <button
               className={buttonClasses}
               onClick={() => this.handleIncrement(tag)}
@@ -49,18 +57,33 @@ class Counters extends Component {
 
   formatCount() {
     const { count } = this.state;
+    this.handleShowState();
     return count === 0 ? "zero" : count;
+      
+  }
+
+  handleShowState = () => {
+    const output = JSON.stringify(this.state, null, 2);
+    console.log(output);
+      
   }
 
   handleIncrement = (product) => {
-    this.setState({ count: this.state.count + 1 });
+    const { count } = this.state;
+      
+    product.counter++;  
+    this.setState({count: count + 1 });
+    this.setState(product);
   };
 
   handleDecrement = (product) => {
+
     const { count } = this.state;
-    //const [count, setCount] = this.useState(0);
-    if (count) {
-      this.setState({ count: this.state.count - 1 });
+
+    if(product.counter > 0) {    
+        product.counter--;
+        this.setState({count: count - 1 });
+        this.setState(product);
     }
   };
 
