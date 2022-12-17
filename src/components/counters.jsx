@@ -7,10 +7,7 @@ class Counters extends Component {
         {tag: "tag1", counter: 0}, 
         {tag: "tag2", counter: 0}, 
         {tag: "tag3", counter: 0}, 
-        {tag: "tag4", counter: 0}, 
-        {tag: "tag5", counter: 0}, 
-        {tag: "tag6", counter: 0}, 
-        {tag: "tag7", counter: 0}, 
+
     ],
   };
 
@@ -46,7 +43,7 @@ class Counters extends Component {
             <button
               className={buttonClasses}
               onClick={() => this.handleDecrement(tag)}
-            >
+              > 
               -
             </button>
           </div>
@@ -67,6 +64,11 @@ class Counters extends Component {
     console.log(output);
       
   }
+
+  disableButton(product) {
+    if(product.counter === 0) return 'disabled';
+      return '';
+  };
 
   handleIncrement = (product) => {
     const { count } = this.state;
