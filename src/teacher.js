@@ -5,7 +5,8 @@ export class Teacher extends Person {
         super(name);
         this.degree = degree;
     }
-
+    
+    
     teach() {
         return ("teach");
     }
