@@ -1,17 +1,11 @@
 import React from 'react';
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import "bootstrap/dist/css/bootstrap.css";
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import { App } from './App.jsx';
 //import registerServiceWorker from "./registerServiceWorker";
-//import App from "./App";
+import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
 
-import Counters from "./components/counters";
-
-let root = document.getElementById("root");
-root = createRoot(root);
-
-root.render(
-  <StrictMode>
-    <Counters />
-  </StrictMode>
-);
+ReactDOM.createRoot(
+    document.querySelector('#root')
+).render(<App />)

@@ -6,3 +6,11 @@ dist-ssr
 .cache
 .idea
 .upm
+.replit
+.idea
+package.json
+package-lock.json
+replit.nix
+tsconfig.json
+tsconfig.node.json
+vite.config.js

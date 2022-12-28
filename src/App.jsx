@@ -1,9 +1,13 @@
-import './App.css'
+import React from 'react';
+import {Vidley} from "./components/vidley";
 
-export default function App() {
-  return (
-    <main>
-      React ⚛️ + Vite ⚡ + Replit 🌀
-    </main>
-  )
+export function App(props) {
+    return (
+        <main className='container'>
+            <Vidley />
+        </main>
+    );
 }
+
+// Log to console
+console.log('Hello console')
