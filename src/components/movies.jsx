@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import {getGenres} from '../services/fakeGenreService';
 import { getMovies, deleteMovie} from '../services/fakeMovieService';
 
-export class Vidley extends Component {
+export class Movies extends Component {
 
     genres = getGenres();
 
@@ -21,15 +21,6 @@ export class Vidley extends Component {
             </React.Fragment>
         );
     }
-
-/*
-    _id: "5b21ca3eeb7f6fbccd47181b",
-    title: "Wedding Crashers",
-    genre: { _id: "5b21ca3eeb7f6fbccd471814", name: "Comedy" },
-    numberInStock: 7,
-    dailyRentalRate: 3.5
-  },
- */
 
     renderMovies() {
         //let buttonClasses = this.getButtonClasses();
@@ -52,7 +43,7 @@ export class Vidley extends Component {
                     <tbody>
                 {this.state.movies.map((movie) => (
 
-                            <tr>
+                            <tr key={movie._id}>
                                 <td>{movie.title}</td>
                                 <td>{movie.genre.name}</td>
                                 <td>{movie.numberInStock}</td>

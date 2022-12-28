@@ -1,10 +1,10 @@
 import React from 'react';
-import {Vidley} from "./components/vidley";
+import {Movies} from "./components/movies";
 
 export function App(props) {
     return (
         <main className='container'>
-            <Vidley />
+            <Movies />
         </main>
     );
 }
