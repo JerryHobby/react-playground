@@ -6,6 +6,4 @@ import { App } from './App.jsx';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
 
-ReactDOM.createRoot(
-    document.querySelector('#root')
-).render(<App />)
+ReactDOM.createRoot(document.querySelector('#root')).render(<App />);
