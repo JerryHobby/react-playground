@@ -7,7 +7,6 @@ dist-ssr
 /.idea
 /.upm
 /.replit
-/package.json
 /package-lock.json
 /replit.nix
 /tsconfig.json
