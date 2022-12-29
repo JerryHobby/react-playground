@@ -13,3 +13,5 @@ dist-ssr
 /tsconfig.json
 /tsconfig.node.json
 /vite.config.js
+/vite.config.js*
+/gitpod.yml
