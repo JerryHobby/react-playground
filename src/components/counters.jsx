@@ -1,105 +1,39 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import Counter from './counter';
 
 class Counters extends Component {
   state = {
-    count: 0,
-    tags: [ 
-        {tag: "tag1", counter: 0}, 
-        {tag: "tag2", counter: 0}, 
-        {tag: "tag3", counter: 0}, 
-        {tag: "tag4", counter: 0}, 
-        {tag: "tag5", counter: 0}, 
-        {tag: "tag6", counter: 0}, 
-        {tag: "tag7", counter: 0}, 
+    counters: [
+      { id: 1, value: 10, selected: true, label: 'First' },
+      { id: 2, value: 20, selected: true, label: 'Second' },
+      { id: 3, value: 30, selected: true, label: 'Third' },
+      { id: 4, value: 40, selected: true, label: 'Fourth' },
     ],
   };
 
-    
-  render() {
-    let badgeClasses = this.getBadgeClasses();
+  handleDelete = (counterId) => {
+    console.log('Delete Event', counterId);
 
+    //this.state.counters = this.state.counters.filter(id: counterId)
+  };
+
+  render() {
     return (
       <React.Fragment>
-        <span className={badgeClasses}>{this.formatCount()}</span>
-        {this.state.tags.length === 0 && <p>Please create some tags.</p>}
-        {this.renderTags()}
-      </React.Fragment>
-    );
-  }
-
-  renderTags() {
-    //let buttonClasses = this.getButtonClasses();
-
-    if (this.state.tags.length === 0) return <p>There are no tags!</p>;
-
-    return (
-      <div>
-        {this.state.tags.map((tag) => (
-          <div key={tag.tag}>
-            {tag.tag} {tag.counter}&nbsp;&nbsp;
-            <button
-              className={this.getButtonClassesEnabled()}
-              onClick={() => this.handleIncrement(tag)}
-            >
-              +
-            </button>
-            <button
-              className={this.getButtonClasses(tag)}
-              onClick={() => this.handleDecrement(tag)}
-            >
-              -
-            </button>
+        {this.state.counters.map((counter) => (
+          <div key={counter.id}>
+            <Counter
+              key={counter.id}
+              id={counter.id}
+              value={counter.value}
+              selected={counter.selected}
+              label={counter.label}
+              onDelete={this.handleDelete}
+            />
           </div>
         ))}
-      </div>
+      </React.Fragment>
     );
-  }
-
-  formatCount() {
-    const { count } = this.state;
-    this.handleShowState();
-    return count === 0 ? "zero" : count;
-      
-  }
-
-  handleShowState = () => {
-    const output = JSON.stringify(this.state, null, 2);
-    console.log(output);
-      
-  }
-
-  handleIncrement = (product) => {
-    const { count } = this.state;
-      
-    product.counter++;  
-    this.setState({count: count + 1 });
-    this.setState(product);
-  };
-
-  handleDecrement = (product) => {
-
-    const { count } = this.state;
-
-    if(product.counter > 0) {    
-        product.counter--;
-        this.setState({count: count - 1 });
-        this.setState(product);
-    }
-  };
-
-  getBadgeClasses() {
-    const { count } = this.state;
-    return "badge m-2 " + (count ? "bg-primary" : "bg-warning");
-  }
-
-  getButtonClassesEnabled() {
-    return "btn btn-secondary btn-sm";
-  }
-  getButtonClasses(product) {
-    if(product.counter === 0) {
-      return "btn btn-warning btn-sm";
-    }
-    return this.getButtonClassesEnabled();
   }
 }
 

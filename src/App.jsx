@@ -1,13 +1,11 @@
 import React from 'react';
-import {Movies} from "./components/movies";
+import Counters from './components/counters';
+//import { Movies } from './components/movies';
 
 export function App(props) {
-    return (
-        <main className='container'>
-            <Movies />
-        </main>
-    );
+  return (
+    <main className="container">
+      <Counters />
+    </main>
+  );
 }
-
-// Log to console
-console.log('Hello console')
