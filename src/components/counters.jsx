@@ -52,7 +52,7 @@ class Counters extends Component {
       <React.Fragment>
         <button
           onClick={this.handleReset}
-          className="btn btn-primary btn-sm m-2"
+          className="btn btn-primary btn-lg m-8"
         >
           Reset
         </button>
