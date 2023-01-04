@@ -7,33 +7,31 @@ class Counters extends Component {
       { id: 1, value: 10, selected: true, label: 'First' },
       { id: 2, value: 20, selected: true, label: 'Second' },
       { id: 3, value: 30, selected: true, label: 'Third' },
-      { id: 4, value: 40, selected: true, label: 'Fourth' },
+      { id: 4, value: 50, selected: true, label: 'Fourth' },
     ],
   };
 
-  handleIncrement = (counterId) => {
-    const counters = this.state.counters;
-    for (var ctr = 0; ctr < counters.length; ctr++) {
-      if (counters[ctr].id === counterId) {
-        counters[ctr].value++;
-      }
-    }
+  handleIncrement = (counter) => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value++;
+
     this.setState({ counters });
   };
 
-  handleDecrement = (counterId) => {
-    const counters = this.state.counters;
-    for (var ctr = 0; ctr < counters.length; ctr++) {
-      if (counters[ctr].id === counterId) {
-        if(counters[ctr].value) {
-          counters[ctr].value--;
-        }
-      }
+  handleDecrement = (counter) => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+
+    if (counters[index].value > 0) {
+      counters[index].value--;
     }
+
     this.setState({ counters });
   };
 
-  
   handleDelete = (counterId) => {
     const counters = this.state.counters.filter((c) => c.id !== counterId);
     this.setState({ counters });
