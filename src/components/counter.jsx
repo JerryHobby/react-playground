@@ -12,6 +12,16 @@ class Counter extends Component {
     console.log('Counter Mounted');
   }
 
+  componentWillUnmount() {
+    console.log('Counter Unmounted');
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.counter.value !== this.props.counter.value) {
+      console.log('counter value updated.');
+      // do whatever
+    }
+  }
+
   render() {
     const { counter, onDecrement, onIncrement, onDelete } = this.props;
     let badgeClasses = this.getBadgeClasses();
@@ -20,33 +30,39 @@ class Counter extends Component {
 
     return (
       <React.Fragment>
-        <span className={badgeClasses} id="c1">
-          {this.formatValue()}
-        </span>
-        <span id="c2">
-          {' '}
-          {counter.label} {counter.id}{' '}
-        </span>
-        <span id="c3">
-          <button
-            className={buttonClasses}
-            onClick={() => onIncrement(counter)}
-          >
-            +
-          </button>
-          <button
-            className={buttonClasses}
-            onClick={() => onDecrement(counter)}
-          >
-            -
-          </button>
-          <button
-            className="btn btn-danger btn-med m-1  "
-            onClick={() => onDelete(counter.id)}
-          >
-            X
-          </button>
-        </span>
+        <div className="row">
+          <div className="col-1">
+            <span className={badgeClasses}>{this.formatValue()}</span>
+          </div>
+          <div className="col-2">
+            <span className="align-bottom">
+              {counter.label} {counter.id}
+            </span>
+          </div>
+          <div className="col">
+            <span className="align-bottom">
+              <button
+                className={buttonClasses}
+                onClick={() => onIncrement(counter)}
+              >
+                +
+              </button>
+              <button
+                disabled={counter.value === 0 && true}
+                className={buttonClasses}
+                onClick={() => onDecrement(counter)}
+              >
+                -
+              </button>
+              <button
+                className="btn btn-danger btn-med m-1  "
+                onClick={() => onDelete(counter.id)}
+              >
+                X
+              </button>
+            </span>
+          </div>
+        </div>
       </React.Fragment>
     );
   }
@@ -58,7 +74,7 @@ class Counter extends Component {
 
   getBadgeClasses() {
     const { value } = this.props.counter;
-    return 'badge m-0 ' + (value ? 'bg-primary' : 'bg-warning ');
+    return 'badge align-bottom m-0 ' + (value ? 'bg-primary' : 'bg-warning ');
   }
 
   getButtonClasses() {

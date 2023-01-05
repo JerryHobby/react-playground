@@ -20,10 +20,10 @@ class NavBar extends Component {
           Home{' '}
           <span className="badge badge-pill bg-primary">
             Counters: {totalCounters}
-          </span>
+          </span>{' '}
           <span className="badge badge-pill bg-secondary">
             Items: {totalItems}
-          </span>
+          </span>{' '}
         </a>
       </nav>
     );
