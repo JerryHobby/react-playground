@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import NavBar from './components/navbar';
 import Counters from './components/counters';
+import {getGenres} from './services/fakeGenreService';
+import { getMovies, deleteMovie} from './services/fakeMovieService';
+import Movies from './components/movies';
 import './App.css';
 
 class App extends Component {
   state = {
+    genres: getGenres(),
+    movies: getMovies(),
     counters: [
       { id: 1, value: 10, selected: true, label: 'First' },
       { id: 2, value: 20, selected: true, label: 'Second' },
@@ -77,6 +82,13 @@ class App extends Component {
           totalCounters={counters.filter((c) => c.value > 0).length}
         />
         <main className="container">
+          <Movies 
+            genres={this.state.genres} 
+            movies={this.state.movies} 
+            onDelete={this.handleDeleteMovie}
+            onFavorite={this.handleFavorite}
+            />
+          <hr></hr>
           <Counters
             counters={counters}
             onReset={this.handleReset}
@@ -88,6 +100,26 @@ class App extends Component {
       </React.Fragment>
     );
   }
+
+
+    handleDeleteMovie = (movie) => {
+        const output = JSON.stringify(movie, null, 2);
+
+        deleteMovie(movie._id);
+        console.log(output);
+
+        this.setState(this.state.movies);
+    }
+
+
+    handleFavorite = (movie) => {
+
+        movie.favorite = !movie.favorite;
+        console.log('mark favorite');
+
+        this.setState(this.state.movies);
+    }
+
 }
 
 export default App;
