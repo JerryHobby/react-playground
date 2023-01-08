@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import NavBar from './components/navbar';
 import Counters from './components/counters';
-import {getGenres} from './services/fakeGenreService';
-import { getMovies, deleteMovie} from './services/fakeMovieService';
+import { getGenres } from './services/fakeGenreService';
+import { getMovies, deleteMovie } from './services/fakeMovieService';
 import Movies from './components/movies';
 import './App.css';
 
@@ -82,12 +82,13 @@ class App extends Component {
           totalCounters={counters.filter((c) => c.value > 0).length}
         />
         <main className="container">
-          <Movies 
-            genres={this.state.genres} 
-            movies={this.state.movies} 
+          <Movies
+            genres={this.state.genres}
+            movies={this.state.movies}
             onDelete={this.handleDeleteMovie}
-            onFavorite={this.handleFavorite}
-            />
+            onLiked={this.handleLiked}
+          />
+          {/*
           <hr></hr>
           <Counters
             counters={counters}
@@ -96,30 +97,31 @@ class App extends Component {
             onIncrement={this.handleIncrement}
             onDecrement={this.handleDecrement}
           />
+          */}
         </main>
       </React.Fragment>
     );
   }
 
+  handleDeleteMovie = (movie) => {
+    const output = JSON.stringify(movie, null, 2);
 
-    handleDeleteMovie = (movie) => {
-        const output = JSON.stringify(movie, null, 2);
+    deleteMovie(movie._id);
+    console.log(output);
 
-        deleteMovie(movie._id);
-        console.log(output);
+    this.setState(this.state.movies);
+  };
 
-        this.setState(this.state.movies);
-    }
+  handleLiked = (movie) => {
+    console.log('toggle liked');
 
+    const movies = [...this.state.movies];
+    const index = movies.indexOf(movie);
+    //movies[index] = { ...movies[index] };
+    movies[index].liked = !movies[index].liked;
 
-    handleFavorite = (movie) => {
-
-        movie.favorite = !movie.favorite;
-        console.log('mark favorite');
-
-        this.setState(this.state.movies);
-    }
-
+    this.setState({ movies });
+  };
 }
 
 export default App;
