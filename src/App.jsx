@@ -68,13 +68,13 @@ class App extends Component {
 
   render() {
     const { counters } = this.state;
-    console.log('App Rendered');
+    console.log('App Rendered ***********');
     let totalItems = 0;
 
     for (var i = 0; i < counters.length; i++) {
       totalItems += counters[i].value;
     }
-    console.log('Total Items: ', totalItems);
+    // console.log('Total Items: ', totalItems);
     return (
       <React.Fragment>
         <NavBar
@@ -104,12 +104,9 @@ class App extends Component {
   }
 
   handleDeleteMovie = (movie) => {
-    const output = JSON.stringify(movie, null, 2);
-
-    deleteMovie(movie._id);
-    console.log(output);
-
-    this.setState(this.state.movies);
+    const movies = deleteMovie(movie._id);
+    console.log('Movie deleted');
+    this.setState(movies);
   };
 
   handleLiked = (movie) => {
@@ -120,7 +117,7 @@ class App extends Component {
     //movies[index] = { ...movies[index] };
     movies[index].liked = !movies[index].liked;
 
-    this.setState({ movies });
+    this.setState(movies);
   };
 }
 

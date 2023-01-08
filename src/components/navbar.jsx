@@ -18,12 +18,14 @@ class NavBar extends Component {
       <nav className="navbar navbar-light bg-light">
         <a className="navbar-brand" href="#">
           Home{' '}
+          {/*
           <span className="badge badge-pill bg-primary">
             Counters: {totalCounters}
           </span>{' '}
           <span className="badge badge-pill bg-secondary">
             Items: {totalItems}
           </span>{' '}
+    */}
         </a>
       </nav>
     );
