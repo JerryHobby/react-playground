@@ -25,7 +25,7 @@ export default class Movies extends Component {
 
     return (
       <div>
-        <h3>Showing {movies.length} movies in the database.</h3>
+        <h3>Showing {allMovies.length} movies in the database.</h3>
         <hr />
         <table className="table">
           <thead>
