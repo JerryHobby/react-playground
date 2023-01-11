@@ -14,7 +14,9 @@
   "dependencies": {
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "lodash": "^4.17.21",
+    "props-type": "^1.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",

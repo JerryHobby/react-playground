@@ -10,6 +10,8 @@ class App extends Component {
   state = {
     genres: getGenres(),
     movies: getMovies(),
+    pageSize: 4,
+    currentPage: 1,
     counters: [
       { id: 1, value: 10, selected: true, label: 'First' },
       { id: 2, value: 20, selected: true, label: 'Second' },
@@ -85,8 +87,11 @@ class App extends Component {
           <Movies
             genres={this.state.genres}
             movies={this.state.movies}
+            pageSize={this.state.pageSize}
+            currentPage={this.state.currentPage}
             onDelete={this.handleDeleteMovie}
             onLiked={this.handleLiked}
+            onPageChange={this.handlePageChange}
           />
           {/*
           <hr></hr>
@@ -102,6 +107,9 @@ class App extends Component {
       </React.Fragment>
     );
   }
+  handlePageChange = (page) => {
+    this.setState({ currentPage: page.page });
+  };
 
   handleDeleteMovie = (movie) => {
     const movies = deleteMovie(movie._id);

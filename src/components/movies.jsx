@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
 import Like from './common/like';
+import Pagination from './common/pagination';
+import { paginate } from '../utils/paginate';
 
 export default class Movies extends Component {
   render() {
+    console.log('Movies Rendered');
+
     return <React.Fragment>{this.renderMovies()}</React.Fragment>;
   }
 
   renderMovies() {
-    const { movies, onDelete, onLiked } = this.props;
-    //let buttonClasses = this.getButtonClasses();
+    const {
+      movies: allMovies,
+      pageSize,
+      onPageChange,
+      currentPage,
+      onDelete,
+      onLiked,
+    } = this.props;
 
+    const movies = paginate(allMovies, currentPage, pageSize);
     if (movies.length === 0) return <p>There are no movies!</p>;
 
     return (
@@ -48,6 +59,12 @@ export default class Movies extends Component {
             ))}
           </tbody>
         </table>
+        <Pagination
+          itemsCount={allMovies.length}
+          pageSize={pageSize}
+          currentPage={currentPage}
+          onPageChange={onPageChange}
+        />
       </div>
     );
   }
