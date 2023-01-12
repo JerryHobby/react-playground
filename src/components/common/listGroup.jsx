@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 const ListGroup = (props) => {
   const { items, onGenreChange, textProperty, valueProperty, currentGenre } =
@@ -21,6 +22,19 @@ const ListGroup = (props) => {
       ))}
     </ul>
   );
+};
+
+ListGroup.defaultProps = {
+  textProperty: 'name',
+  valueProperty: '_id',
+};
+
+ListGroup.propTypes = {
+  items: PropTypes.array.isRequired,
+  onGenreChange: PropTypes.func.isRequired,
+  textProperty: PropTypes.string,
+  valueProperty: PropTypes.string,
+  currentGenre: PropTypes.string.isRequired,
 };
 
 export default ListGroup;
