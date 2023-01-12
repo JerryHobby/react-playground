@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './components/navbar';
+import _ from 'lodash';
 import { getGenres } from './services/fakeGenreService';
 import { getMovies, deleteMovie } from './services/fakeMovieService';
 import Movies from './components/movies';
@@ -23,7 +24,9 @@ class App extends Component {
     // make Ajax calls to get data
     const genres = getGenres();
     const movies = getMovies();
-    this.setState({ movies: getMovies(), genres: getGenres() });
+
+    genres.push({'_id': 'all', 'name': 'All'});
+    this.setState({ movies: movies, genres: genres });
 
     console.log('App Mounted');
   }
@@ -63,7 +66,15 @@ class App extends Component {
   handleGenreChange = (genre) => {
     console.log('genre selected **********');
     const currentGenre = genre._id;
-    this.setState({ currentGenre: currentGenre });
+    const currentPage = 1;
+    let movies = [];
+    if(genre._id === 'all') {
+      movies = getMovies();
+    } else {
+      movies = getMovies().filter(movie => movie.genre.name === genre.name);
+    }
+
+    this.setState({ currentGenre: currentGenre, movies: movies, currentPage: currentPage });
   };
 
   handleDeleteMovie = (movie) => {
