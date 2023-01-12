@@ -25,7 +25,7 @@ class App extends Component {
     const genres = getGenres();
     const movies = getMovies();
 
-    genres.push({'_id': 'all', 'name': 'All'});
+    genres.unshift({'_id': 'all', 'name': 'All'});
     this.setState({ movies: movies, genres: genres });
 
     console.log('App Mounted');
