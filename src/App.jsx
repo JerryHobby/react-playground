@@ -8,10 +8,11 @@ import './App.css';
 
 class App extends Component {
   state = {
-    genres: getGenres(),
-    movies: getMovies(),
+    genres: [],
+    movies: [],
     pageSize: 4,
     currentPage: 1,
+    currentGenre: 'all',
     counters: [
       { id: 1, value: 10, selected: true, label: 'First' },
       { id: 2, value: 20, selected: true, label: 'Second' },
@@ -27,8 +28,10 @@ class App extends Component {
 
   componentDidMount() {
     // make Ajax calls to get data
-    const movies = { id: 1, name: 'Die Hard' };
-    this.setState(movies);
+    const genres = getGenres();
+    const movies = getMovies();
+    this.setState({ movies: getMovies(), genres: getGenres() });
+
     console.log('App Mounted');
   }
 
@@ -89,9 +92,11 @@ class App extends Component {
             movies={this.state.movies}
             pageSize={this.state.pageSize}
             currentPage={this.state.currentPage}
+            currentGenre={this.state.currentGenre}
             onDelete={this.handleDeleteMovie}
             onLiked={this.handleLiked}
             onPageChange={this.handlePageChange}
+            onGenreChange={this.handleGenreChange}
           />
           {/*
           <hr></hr>
@@ -109,6 +114,12 @@ class App extends Component {
   }
   handlePageChange = (page) => {
     this.setState({ currentPage: page.page });
+  };
+
+  handleGenreChange = (genre) => {
+    console.log('genre selected **********');
+    const currentGenre = genre._id;
+    this.setState({ currentGenre: currentGenre });
   };
 
   handleDeleteMovie = (movie) => {

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Like extends Component {
   render() {
-    if (this.props.liked == true) {
+    const { liked, onClick } = this.props;
+
+    if (liked == true) {
       var likedClass = 'fa fa-heart text-danger';
     } else {
       var likedClass = 'fa fa-heart-o text-muted';
@@ -13,10 +16,15 @@ class Like extends Component {
         className={likedClass}
         style={{ cursor: 'pointer' }}
         aria-hidden="true"
-        onClick={() => this.props.onClick()}
+        onClick={() => onClick()}
       ></i>
     );
   }
 }
+
+Like.propTypes = {
+  liked: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 export default Like;
