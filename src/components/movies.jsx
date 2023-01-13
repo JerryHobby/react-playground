@@ -30,6 +30,8 @@ export default class Movies extends Component {
 
     return (
       <div className="row">
+        <h3>Showing {allMovies.length} movies in the database.</h3>
+        <hr />
         <div className="col-3">
           <ListGroup
             items={genres}
@@ -38,8 +40,6 @@ export default class Movies extends Component {
           />
         </div>
         <div className="col">
-          <h3>Showing {allMovies.length} movies in the database.</h3>
-          <hr />
           <table className="table">
             <thead>
               <tr>

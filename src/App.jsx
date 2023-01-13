@@ -10,7 +10,7 @@ class App extends Component {
   state = {
     genres: [],
     movies: [],
-    pageSize: 4,
+    pageSize: 6,
     currentPage: 1,
     currentGenre: 'all',
   };
@@ -25,7 +25,7 @@ class App extends Component {
     const genres = getGenres();
     const movies = getMovies();
 
-    genres.unshift({'_id': 'all', 'name': 'All'});
+    genres.unshift({ _id: 'all', name: 'All' });
     this.setState({ movies: movies, genres: genres });
 
     console.log('App Mounted');
@@ -40,8 +40,7 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <NavBar
-        />
+        <NavBar />
         <main className="container">
           <Movies
             genres={this.state.genres}
@@ -58,7 +57,7 @@ class App extends Component {
       </React.Fragment>
     );
   }
-  
+
   handlePageChange = (page) => {
     this.setState({ currentPage: page.page });
   };
@@ -68,13 +67,17 @@ class App extends Component {
     const currentGenre = genre._id;
     const currentPage = 1;
     let movies = [];
-    if(genre._id === 'all') {
+    if (genre._id === 'all') {
       movies = getMovies();
     } else {
-      movies = getMovies().filter(movie => movie.genre.name === genre.name);
+      movies = getMovies().filter((movie) => movie.genre.name === genre.name);
     }
 
-    this.setState({ currentGenre: currentGenre, movies: movies, currentPage: currentPage });
+    this.setState({
+      currentGenre: currentGenre,
+      movies: movies,
+      currentPage: currentPage,
+    });
   };
 
   handleDeleteMovie = (movie) => {
