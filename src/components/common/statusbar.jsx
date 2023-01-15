@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-
 class StatusBar extends Component {
   constructor(props) {
     super(props);
@@ -17,12 +16,20 @@ class StatusBar extends Component {
     console.log('StatusBar Rendered');
     console.log(items);
 
-    return (<div className="row m-0 p-0">
+    return (
+      <div className="row m-0 p-0">
         {items.map((item) => (
-    <div key={item.label} className="col m-0 pl-1 pr-1 text-info bg-dark border-end border-white">{item.label}{': '}{item.value}</div>
-    ))}
-
-    </div>);
+          <div
+            key={item.label}
+            className="col m-0 pl-1 pr-1 text-info bg-dark border-end border-white"
+          >
+            {item.label}
+            {': '}
+            {item.value}
+          </div>
+        ))}
+      </div>
+    );
   }
 }
 

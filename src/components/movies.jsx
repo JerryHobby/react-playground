@@ -3,7 +3,7 @@ import Like from './common/like';
 import ListGroup from './common/listGroup';
 import Pagination from './common/pagination';
 import { paginate } from '../utils/paginate';
-import MoviesTable from './common/moviestable';
+import MoviesTable from './moviestable';
 import PropTypes from 'prop-types';
 
 export default class Movies extends Component {
@@ -41,7 +41,11 @@ export default class Movies extends Component {
           />
         </div>
         <div className="col">
-          <MoviesTable movies={movies} onLiked={onLiked} onDelete={onDelete} />
+          <MoviesTable
+            movies={movies}
+            onLiked={onLiked}
+            onDelete={onDelete}
+          />
           <Pagination
             itemsCount={allMovies.length}
             pageSize={pageSize}

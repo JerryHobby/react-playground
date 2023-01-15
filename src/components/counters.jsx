@@ -20,7 +20,10 @@ class Counters extends Component {
 
     return (
       <React.Fragment>
-        <button onClick={onReset} className="btn btn-primary btn-lg m-8">
+        <button
+          onClick={onReset}
+          className="btn btn-primary btn-lg m-8"
+        >
           Reset
         </button>
         {counters.map((counter) => (

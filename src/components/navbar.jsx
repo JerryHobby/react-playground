@@ -16,7 +16,10 @@ class NavBar extends Component {
 
     return (
       <nav className="navbar navbar-expand-sm navbar-light bg-light">
-        <a className="navbar-brand" href="#">
+        <a
+          className="navbar-brand"
+          href="#"
+        >
           Navbar
         </a>
         <button
@@ -30,9 +33,15 @@ class NavBar extends Component {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div
+          className="collapse navbar-collapse"
+          id="navbarNavAltMarkup"
+        >
           <div className="navbar-nav">
-            <a className="nav-item nav-link active" href="#">
+            <a
+              className="nav-item nav-link active"
+              href="#"
+            >
               Home <span className="sr-only">(current)</span>
             </a>
             <a
@@ -42,10 +51,16 @@ class NavBar extends Component {
             >
               Reload
             </a>
-            <a className="nav-item nav-link" href="#">
+            <a
+              className="nav-item nav-link"
+              href="#"
+            >
               Unused
             </a>
-            <a className="nav-item nav-link disabled" href="#">
+            <a
+              className="nav-item nav-link disabled"
+              href="#"
+            >
               Disabled
             </a>
           </div>

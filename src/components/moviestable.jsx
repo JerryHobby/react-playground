@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Like from './like';
+import Like from './common/like';
 import PropTypes from 'prop-types';
 
 class MoviesTable extends Component {
@@ -25,7 +25,10 @@ class MoviesTable extends Component {
               <td>{movie.numberInStock}</td>
               <td>{movie.dailyRentalRate}</td>
               <td>
-                <Like liked={movie.liked} onClick={() => onLiked(movie)} />
+                <Like
+                  liked={movie.liked}
+                  onClick={() => onLiked(movie)}
+                />
               </td>
               <td>
                 <button
