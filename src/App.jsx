@@ -27,28 +27,7 @@ class App extends Component {
     const genres = getGenres();
     const movies = getMovies();
 
-    const statusBarItems = [
-      {
-        label: 'Total Movies',
-        value: '500',
-      },
-      {
-        label: 'Current View',
-        value: '50',
-      },
-      {
-        label: 'Total Liked',
-        value: '25',
-      },
-      {
-        label: 'Current Liked',
-        value: '5',
-      },
-      {
-        label: 'Date',
-        value: '12/25/2025',
-      },
-    ];
+    const statusBarItems = [];
 
     genres.unshift({ _id: 'all', name: 'All' });
     this.setState({
@@ -63,7 +42,22 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {}
 
   render() {
-    const { statusBarItems } = this.state;
+    const {
+      genres,
+      movies,
+      pageSize,
+      currentPage,
+      currentGenre,
+      statusBarItems,
+    } = this.state;
+
+    statusBarItems[0] = { label: 'Total', value: getMovies().length };
+    statusBarItems[1] = { label: 'Shown', value: movies.length };
+    statusBarItems[2] = { label: 'Total Liked', value: '' };
+    statusBarItems[3] = { label: 'Shown Liked', value: '' };
+    statusBarItems[4] = { label: 'User', value: 'Jerry' };
+    statusBarItems[5] = { label: 'Date', value: '' };
+
     console.log('App Rendered ***********');
     let totalItems = 0;
 
@@ -73,11 +67,11 @@ class App extends Component {
         <NavBar />
         <main className="container">
           <Movies
-            genres={this.state.genres}
-            movies={this.state.movies}
-            pageSize={this.state.pageSize}
-            currentPage={this.state.currentPage}
-            currentGenre={this.state.currentGenre}
+            genres={genres}
+            movies={movies}
+            pageSize={pageSize}
+            currentPage={currentPage}
+            currentGenre={currentGenre}
             onDelete={this.handleDeleteMovie}
             onLiked={this.handleLiked}
             onPageChange={this.handlePageChange}
