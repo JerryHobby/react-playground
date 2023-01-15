@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './components/navbar';
-import StatusBar from './components/statusbar';
+import StatusBar from './components/common/statusbar';
 import _ from 'lodash';
 import { getGenres } from './services/fakeGenreService';
 import { getMovies, deleteMovie } from './services/fakeMovieService';
@@ -28,30 +28,34 @@ class App extends Component {
     const movies = getMovies();
 
     const statusBarItems = [
-    {
-      label: 'Total Movies',
-      value: '500',
-    },
-    {
-      label: 'Current View',
-      value: '50',
-    },
       {
-      label: 'Total Liked',
-      value: '25',
-    },
-    {
-      label: 'Current Liked',
-      value: '5',
-    },
- {
-      label: 'Date',
-      value: '12/25/2025',
-    },
-];
+        label: 'Total Movies',
+        value: '500',
+      },
+      {
+        label: 'Current View',
+        value: '50',
+      },
+      {
+        label: 'Total Liked',
+        value: '25',
+      },
+      {
+        label: 'Current Liked',
+        value: '5',
+      },
+      {
+        label: 'Date',
+        value: '12/25/2025',
+      },
+    ];
 
     genres.unshift({ _id: 'all', name: 'All' });
-    this.setState({ movies: movies, genres: genres, statusBarItems: statusBarItems });
+    this.setState({
+      movies: movies,
+      genres: genres,
+      statusBarItems: statusBarItems,
+    });
 
     console.log('App Mounted');
   }
@@ -65,7 +69,7 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <StatusBar items = {statusBarItems}/>
+        <StatusBar items={statusBarItems} />
         <NavBar />
         <main className="container">
           <Movies
