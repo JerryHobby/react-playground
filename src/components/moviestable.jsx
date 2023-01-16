@@ -5,16 +5,39 @@ import PropTypes from 'prop-types';
 class MoviesTable extends Component {
   // movies, ondelete, like,
   render() {
-    const { movies, onLiked, onDelete } = this.props;
+    const { movies, onLiked, onDelete, onPageSort } = this.props;
     return (
       <table className="table">
         <thead>
           <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Genre</th>
-            <th scope="col">Stock</th>
-
-            <th scope="col">Rate</th>
+            <th
+              style={{ cursor: 'pointer' }}
+              onClick={() => onPageSort('Title')}
+              scope="col"
+            >
+              Title
+            </th>
+            <th
+              style={{ cursor: 'pointer' }}
+              onClick={() => onPageSort('Genre')}
+              scope="col"
+            >
+              Genre
+            </th>
+            <th
+              style={{ cursor: 'pointer' }}
+              onClick={() => onPageSort('Stock')}
+              scope="col"
+            >
+              Stock
+            </th>
+            <th
+              style={{ cursor: 'pointer' }}
+              onClick={() => onPageSort('Rate')}
+              scope="col"
+            >
+              Rate
+            </th>
           </tr>
         </thead>
         <tbody>

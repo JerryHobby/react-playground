@@ -27,8 +27,10 @@ class App extends Component {
     // make Ajax calls to get data
     const genres = getGenres();
     const movies = getMovies();
-    
-    const likedMovies = movies.filter((movie) => movie.liked.name === true).length;
+
+    const likedMovies = movies.filter(
+      (movie) => movie.liked.name === true
+    ).length;
     const statusBarItems = [];
 
     genres.unshift({ _id: 'all', name: 'All' });
@@ -54,10 +56,16 @@ class App extends Component {
       currentGenre,
       statusBarItems,
     } = this.state;
-    
-    const likedAllMovies = allMovies.filter((movie) => movie.liked === true).length;
+
+    const likedAllMovies = allMovies.filter(
+      (movie) => movie.liked === true
+    ).length;
     const likedMovies = movies.filter((movie) => movie.liked === true).length;
-    const dateStr = new Date().toLocaleDateString('en-us', {year:"numeric", month:"short", day:"numeric"}) 
+    const dateStr = new Date().toLocaleDateString('en-us', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
 
     statusBarItems[0] = { label: 'Total', value: allMovies.length };
     statusBarItems[1] = { label: 'Shown', value: movies.length };
@@ -84,6 +92,7 @@ class App extends Component {
             onLiked={this.handleLiked}
             onPageChange={this.handlePageChange}
             onGenreChange={this.handleGenreChange}
+            onPageSort={this.handlePageSort}
           />
         </main>
       </React.Fragment>
@@ -92,6 +101,13 @@ class App extends Component {
 
   handlePageChange = (page) => {
     this.setState({ currentPage: page.page });
+  };
+
+  handlePageSort = (column) => {
+    const movies = ({ movies } = this.state);
+    movies = movies.ord;
+    console.log('Page Sort by', column);
+    //    this.setState({ currentPage: page.page });
   };
 
   handleGenreChange = (genre) => {

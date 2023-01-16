@@ -20,6 +20,7 @@ export default class Movies extends Component {
       pageSize,
       onPageChange,
       onGenreChange,
+      onPageSort,
       currentPage,
       currentGenre,
       onDelete,
@@ -45,6 +46,7 @@ export default class Movies extends Component {
             movies={movies}
             onLiked={onLiked}
             onDelete={onDelete}
+            onPageSort={onPageSort}
           />
           <Pagination
             itemsCount={allMovies.length}
