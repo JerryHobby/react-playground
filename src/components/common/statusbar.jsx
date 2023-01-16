@@ -24,7 +24,7 @@ class StatusBar extends Component {
             className="col m-0 pl-1 pr-1 text-info bg-dark border-end border-white"
           >
             {item.label}
-            {': '}
+            {(item.label.length && item.value !='') ? ': ':''}
             {item.value}
           </div>
         ))}

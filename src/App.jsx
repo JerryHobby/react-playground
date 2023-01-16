@@ -11,6 +11,7 @@ class App extends Component {
   state = {
     genres: [],
     movies: [],
+    allMovies: [],
     statusBarItems: [],
     pageSize: 6,
     currentPage: 1,
@@ -26,12 +27,14 @@ class App extends Component {
     // make Ajax calls to get data
     const genres = getGenres();
     const movies = getMovies();
-
+    
+    const likedMovies = movies.filter((movie) => movie.liked.name === true).length;
     const statusBarItems = [];
 
     genres.unshift({ _id: 'all', name: 'All' });
     this.setState({
       movies: movies,
+      allMovies: movies,
       genres: genres,
       statusBarItems: statusBarItems,
     });
@@ -45,18 +48,23 @@ class App extends Component {
     const {
       genres,
       movies,
+      allMovies,
       pageSize,
       currentPage,
       currentGenre,
       statusBarItems,
     } = this.state;
+    
+    const likedAllMovies = allMovies.filter((movie) => movie.liked === true).length;
+    const likedMovies = movies.filter((movie) => movie.liked === true).length;
+    const dateStr = new Date().toLocaleDateString('en-us', {year:"numeric", month:"short", day:"numeric"}) 
 
-    statusBarItems[0] = { label: 'Total', value: getMovies().length };
+    statusBarItems[0] = { label: 'Total', value: allMovies.length };
     statusBarItems[1] = { label: 'Shown', value: movies.length };
-    statusBarItems[2] = { label: 'Total Liked', value: '' };
-    statusBarItems[3] = { label: 'Shown Liked', value: '' };
+    statusBarItems[2] = { label: 'Total Liked', value: likedAllMovies };
+    statusBarItems[3] = { label: 'Shown Liked', value: likedMovies };
     statusBarItems[4] = { label: 'User', value: 'Jerry' };
-    statusBarItems[5] = { label: 'Date', value: '' };
+    statusBarItems[5] = { label: '', value: dateStr };
 
     console.log('App Rendered ***********');
     let totalItems = 0;
