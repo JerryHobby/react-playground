@@ -11,6 +11,7 @@ class MoviesTable extends Component {
         <thead>
           <tr>
             <th
+              className="bg-primary text-light"
               style={{ cursor: 'pointer' }}
               onClick={() => onSort('title', 'asc')}
               scope="col"
@@ -18,6 +19,7 @@ class MoviesTable extends Component {
               Title
             </th>
             <th
+              className="bg-primary text-light"
               style={{ cursor: 'pointer' }}
               onClick={() => onSort('genre.name', 'asc')}
               scope="col"
@@ -25,6 +27,7 @@ class MoviesTable extends Component {
               Genre
             </th>
             <th
+              className="bg-primary text-light"
               style={{ cursor: 'pointer' }}
               onClick={() => onSort('numberInStock', 'asc')}
               scope="col"
@@ -32,6 +35,7 @@ class MoviesTable extends Component {
               Stock
             </th>
             <th
+              className="bg-primary text-light"
               style={{ cursor: 'pointer' }}
               onClick={() => onSort('dailyRentalRate', 'asc')}
               scope="col"
@@ -39,12 +43,17 @@ class MoviesTable extends Component {
               Rate
             </th>
             <th
+              className="bg-primary text-light"
               style={{ cursor: 'pointer' }}
               onClick={() => onSort('liked', 'desc')}
               scope="col"
             >
               Liked
             </th>
+            <th
+              className="bg-primary text-light"
+              scope="col"
+            ></th>
           </tr>
         </thead>
         <tbody>
