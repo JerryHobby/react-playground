@@ -16,6 +16,7 @@ class App extends Component {
     pageSize: 6,
     currentPage: 1,
     currentGenre: 'all',
+    sortPath: { path: '', order: '' },
   };
 
   constructor(props) {
@@ -92,7 +93,7 @@ class App extends Component {
             onLiked={this.handleLiked}
             onPageChange={this.handlePageChange}
             onGenreChange={this.handleGenreChange}
-            onPageSort={this.handlePageSort}
+            onSort={this.handleSort}
           />
         </main>
       </React.Fragment>
@@ -103,30 +104,19 @@ class App extends Component {
     this.setState({ currentPage: page.page });
   };
 
-  handlePageSort = (column) => {
-    const { movies } = this.state;
-    const ascending = column === 'liked' ? true : false;
+  handleSort = (path, order) => {
+    const { movies, sortPath } = this.state;
 
-    if (ascending) {
-      movies.sort((m1, m2) =>
-        m1[column] + m1.title <= m2[column] + m2.title
-          ? 1
-          : m1[column] + m1.title > m2[column] + m2.title
-          ? -1
-          : 0
-      );
-    } else {
-      movies.sort((m1, m2) =>
-        m1[column] + m1.title > m2[column] + m2.title
-          ? 1
-          : m1[column] + m1.title <= m2[column] + m2.title
-          ? -1
-          : 0
-      );
+    let newPath = { path: path, order: order };
+
+    if (newPath.path === sortPath.path) {
+      newPath.order = sortPath.order === 'asc' ? 'desc' : 'asc';
     }
 
-    console.log(' Movies Sorted by', column);
-    this.setState({ movies: movies });
+    let sortedMovies = _.orderBy(movies, [newPath.path], [newPath.order]);
+
+    console.log(' Movies Sorted by', path, order);
+    this.setState({ movies: sortedMovies, sortPath: newPath });
   };
 
   handleGenreChange = (genre) => {
