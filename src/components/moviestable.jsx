@@ -12,31 +12,38 @@ class MoviesTable extends Component {
           <tr>
             <th
               style={{ cursor: 'pointer' }}
-              onClick={() => onPageSort('Title')}
+              onClick={() => onPageSort('title')}
               scope="col"
             >
               Title
             </th>
             <th
               style={{ cursor: 'pointer' }}
-              onClick={() => onPageSort('Genre')}
+              onClick={() => onPageSort('genre')}
               scope="col"
             >
               Genre
             </th>
             <th
               style={{ cursor: 'pointer' }}
-              onClick={() => onPageSort('Stock')}
+              onClick={() => onPageSort('numberInStock')}
               scope="col"
             >
               Stock
             </th>
             <th
               style={{ cursor: 'pointer' }}
-              onClick={() => onPageSort('Rate')}
+              onClick={() => onPageSort('dailyRentalRate')}
               scope="col"
             >
               Rate
+            </th>            
+            <th
+              style={{ cursor: 'pointer' }}
+              onClick={() => onPageSort('liked')}
+              scope="col"
+            >
+              Liked
             </th>
           </tr>
         </thead>

@@ -104,10 +104,12 @@ class App extends Component {
   };
 
   handlePageSort = (column) => {
-    const movies = ({ movies } = this.state);
-    movies = movies.ord;
-    console.log('Page Sort by', column);
-    //    this.setState({ currentPage: page.page });
+    const { movies } = this.state;
+
+    movies.sort((m1, m2) => (m1[column] > m2[column]) ? 1 : (m1[column] <= m2[column]) ? -1 : 0);
+
+    console.log(' Movies Sorted by', column);
+       this.setState({ movies: movies });
   };
 
   handleGenreChange = (genre) => {
