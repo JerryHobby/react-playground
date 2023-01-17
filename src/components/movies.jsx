@@ -70,4 +70,5 @@ Movies.propTypes = {
   onGenreChange: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   onLiked: PropTypes.func.isRequired,
+  onSort: PropTypes.func.isRequired,
 };

@@ -139,8 +139,9 @@ class App extends Component {
 
   handleDeleteMovie = (movie) => {
     const movies = deleteMovie(movie._id);
+    const allMovies = movies;
     console.log('Movie deleted');
-    this.setState(movies);
+    this.setState({ movies, allMovies });
   };
 
   handleLiked = (movie) => {

@@ -89,6 +89,7 @@ MoviesTable.propTypes = {
   movies: PropTypes.array.isRequired,
   onLiked: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  onSort: PropTypes.func.isRequired,
 };
 
 export default MoviesTable;
