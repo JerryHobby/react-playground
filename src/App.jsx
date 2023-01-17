@@ -105,11 +105,28 @@ class App extends Component {
 
   handlePageSort = (column) => {
     const { movies } = this.state;
+    const ascending = column === 'liked' ? true : false;
 
-    movies.sort((m1, m2) => (m1[column] > m2[column]) ? 1 : (m1[column] <= m2[column]) ? -1 : 0);
+    if (ascending) {
+      movies.sort((m1, m2) =>
+        m1[column] + m1.title <= m2[column] + m2.title
+          ? 1
+          : m1[column] + m1.title > m2[column] + m2.title
+          ? -1
+          : 0
+      );
+    } else {
+      movies.sort((m1, m2) =>
+        m1[column] + m1.title > m2[column] + m2.title
+          ? 1
+          : m1[column] + m1.title <= m2[column] + m2.title
+          ? -1
+          : 0
+      );
+    }
 
     console.log(' Movies Sorted by', column);
-       this.setState({ movies: movies });
+    this.setState({ movies: movies });
   };
 
   handleGenreChange = (genre) => {
