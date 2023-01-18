@@ -16,7 +16,7 @@ class App extends Component {
     pageSize: 6,
     currentPage: 1,
     currentGenre: 'all',
-    sortPath: { path: '', order: '' },
+    sortPath: { path: 'title', order: 'asc' },
   };
 
   constructor(props) {
@@ -56,12 +56,15 @@ class App extends Component {
       currentPage,
       currentGenre,
       statusBarItems,
+      sortPath,
     } = this.state;
 
     const likedAllMovies = allMovies.filter(
       (movie) => movie.liked === true
     ).length;
+
     const likedMovies = movies.filter((movie) => movie.liked === true).length;
+
     const dateStr = new Date().toLocaleDateString('en-us', {
       year: 'numeric',
       month: 'short',
@@ -94,6 +97,7 @@ class App extends Component {
             onPageChange={this.handlePageChange}
             onGenreChange={this.handleGenreChange}
             onSort={this.handleSort}
+            sortPath={sortPath}
           />
         </main>
       </React.Fragment>
@@ -104,19 +108,13 @@ class App extends Component {
     this.setState({ currentPage: page.page });
   };
 
-  handleSort = (path, order) => {
-    const { movies, sortPath } = this.state;
+  handleSort = (sortPath) => {
+    const { movies } = this.state;
 
-    let newPath = { path: path, order: order };
+    let sortedMovies = _.orderBy(movies, [sortPath.path], [sortPath.order]);
 
-    if (newPath.path === sortPath.path) {
-      newPath.order = sortPath.order === 'asc' ? 'desc' : 'asc';
-    }
-
-    let sortedMovies = _.orderBy(movies, [newPath.path], [newPath.order]);
-
-    console.log(' Movies Sorted by', path, order);
-    this.setState({ movies: sortedMovies, sortPath: newPath });
+    console.log(' Movies Sorted by', sortPath.path, sortPath.order);
+    this.setState({ movies: sortedMovies, sortPath: sortPath });
   };
 
   handleGenreChange = (genre) => {
@@ -138,10 +136,11 @@ class App extends Component {
   };
 
   handleDeleteMovie = (movie) => {
-    const movies = deleteMovie(movie._id);
-    const allMovies = movies;
+    deleteMovie(movie._id);
+    const movies = getMovies();
+
     console.log('Movie deleted');
-    this.setState({ movies, allMovies });
+    this.setState({ movies, allMovies: movies });
   };
 
   handleLiked = (movie) => {

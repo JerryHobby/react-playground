@@ -3,9 +3,22 @@ import Like from './common/like';
 import PropTypes from 'prop-types';
 
 class MoviesTable extends Component {
+  raiseSort = (path) => {
+    const sortPath = { ...this.props.sortPath };
+
+    if (sortPath.path === path) {
+      sortPath.order = sortPath.order === 'asc' ? 'desc' : 'asc';
+    } else {
+      sortPath.path = path;
+      sortPath.order = 'asc';
+    }
+
+    this.props.onSort(sortPath);
+  };
+
   // movies, ondelete, like,
   render() {
-    const { movies, onLiked, onDelete, onSort } = this.props;
+    const { movies, onLiked, onDelete } = this.props;
     return (
       <table className="table">
         <thead>
@@ -13,7 +26,7 @@ class MoviesTable extends Component {
             <th
               className="bg-primary text-light"
               style={{ cursor: 'pointer' }}
-              onClick={() => onSort('title', 'asc')}
+              onClick={() => this.raiseSort('title')}
               scope="col"
             >
               Title
@@ -21,7 +34,7 @@ class MoviesTable extends Component {
             <th
               className="bg-primary text-light"
               style={{ cursor: 'pointer' }}
-              onClick={() => onSort('genre.name', 'asc')}
+              onClick={() => this.raiseSort('genre.name')}
               scope="col"
             >
               Genre
@@ -29,7 +42,7 @@ class MoviesTable extends Component {
             <th
               className="bg-primary text-light"
               style={{ cursor: 'pointer' }}
-              onClick={() => onSort('numberInStock', 'asc')}
+              onClick={() => this.raiseSort('numberInStock')}
               scope="col"
             >
               Stock
@@ -37,7 +50,7 @@ class MoviesTable extends Component {
             <th
               className="bg-primary text-light"
               style={{ cursor: 'pointer' }}
-              onClick={() => onSort('dailyRentalRate', 'asc')}
+              onClick={() => this.raiseSort('dailyRentalRate')}
               scope="col"
             >
               Rate
@@ -45,7 +58,7 @@ class MoviesTable extends Component {
             <th
               className="bg-primary text-light"
               style={{ cursor: 'pointer' }}
-              onClick={() => onSort('liked', 'desc')}
+              onClick={() => this.raiseSort('liked')}
               scope="col"
             >
               Liked
@@ -90,6 +103,7 @@ MoviesTable.propTypes = {
   onLiked: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   onSort: PropTypes.func.isRequired,
+  sortPath: PropTypes.object.isRequired,
 };
 
 export default MoviesTable;

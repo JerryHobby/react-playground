@@ -21,6 +21,7 @@ export default class Movies extends Component {
       onPageChange,
       onGenreChange,
       onSort,
+      sortPath,
       currentPage,
       currentGenre,
       onDelete,
@@ -47,6 +48,7 @@ export default class Movies extends Component {
             onLiked={onLiked}
             onDelete={onDelete}
             onSort={onSort}
+            sortPath={sortPath}
           />
           <Pagination
             itemsCount={allMovies.length}
@@ -71,4 +73,5 @@ Movies.propTypes = {
   onDelete: PropTypes.func.isRequired,
   onLiked: PropTypes.func.isRequired,
   onSort: PropTypes.func.isRequired,
+  sortPath: PropTypes.object.isRequired,
 };
