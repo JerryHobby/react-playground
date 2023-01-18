@@ -10,7 +10,8 @@ class MoviesTable extends Component {
       sortPath.order = sortPath.order === 'asc' ? 'desc' : 'asc';
     } else {
       sortPath.path = path;
-      sortPath.order = 'asc';
+      // default sort liked is desc
+      sortPath.order = sortPath.path === 'liked' ? 'desc' : 'asc';
     }
 
     this.props.onSort(sortPath);
