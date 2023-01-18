@@ -3,7 +3,7 @@ import Like from './common/like';
 import ListGroup from './common/listGroup';
 import Pagination from './common/pagination';
 import { paginate } from '../utils/paginate';
-import MoviesTable from './moviestable';
+import MoviesTable from './moviesTable';
 import PropTypes from 'prop-types';
 
 export default class Movies extends Component {

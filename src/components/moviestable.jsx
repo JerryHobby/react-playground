@@ -1,75 +1,26 @@
 import React, { Component } from 'react';
 import Like from './common/like';
+import TableHeader from './common/tableHeader';
 import PropTypes from 'prop-types';
-
 class MoviesTable extends Component {
-  raiseSort = (path) => {
-    const sortPath = { ...this.props.sortPath };
+  columns = [
+    { label: 'Title', path: 'title' },
+    { label: 'Genre', path: 'genre.name' },
+    { label: 'Stock', path: 'numberInStock' },
+    { label: 'Rate', path: 'dailyRentalRate' },
+    { label: 'Like', path: 'liked', defaultSort: 'desc' },
+    { key: 'delete' },
+  ];
 
-    if (sortPath.path === path) {
-      sortPath.order = sortPath.order === 'asc' ? 'desc' : 'asc';
-    } else {
-      sortPath.path = path;
-      // default sort liked is desc
-      sortPath.order = sortPath.path === 'liked' ? 'desc' : 'asc';
-    }
-
-    this.props.onSort(sortPath);
-  };
-
-  // movies, ondelete, like,
   render() {
-    const { movies, onLiked, onDelete } = this.props;
+    const { movies, onLiked, onDelete, onSort, sortPath } = this.props;
     return (
       <table className="table">
-        <thead>
-          <tr>
-            <th
-              className="bg-primary text-light"
-              style={{ cursor: 'pointer' }}
-              onClick={() => this.raiseSort('title')}
-              scope="col"
-            >
-              Title
-            </th>
-            <th
-              className="bg-primary text-light"
-              style={{ cursor: 'pointer' }}
-              onClick={() => this.raiseSort('genre.name')}
-              scope="col"
-            >
-              Genre
-            </th>
-            <th
-              className="bg-primary text-light"
-              style={{ cursor: 'pointer' }}
-              onClick={() => this.raiseSort('numberInStock')}
-              scope="col"
-            >
-              Stock
-            </th>
-            <th
-              className="bg-primary text-light"
-              style={{ cursor: 'pointer' }}
-              onClick={() => this.raiseSort('dailyRentalRate')}
-              scope="col"
-            >
-              Rate
-            </th>
-            <th
-              className="bg-primary text-light"
-              style={{ cursor: 'pointer' }}
-              onClick={() => this.raiseSort('liked')}
-              scope="col"
-            >
-              Liked
-            </th>
-            <th
-              className="bg-primary text-light"
-              scope="col"
-            ></th>
-          </tr>
-        </thead>
+        <TableHeader
+          columns={this.columns}
+          sortPath={sortPath}
+          onSort={onSort}
+        />
         <tbody>
           {movies.map((movie) => (
             <tr key={movie._id}>
