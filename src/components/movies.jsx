@@ -29,7 +29,6 @@ export default class Movies extends Component {
     } = this.props;
 
     const movies = paginate(allMovies, currentPage, pageSize);
-    if (movies.length === 0) return <p>There are no movies!</p>;
 
     return (
       <div className="row">

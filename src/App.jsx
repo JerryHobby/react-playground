@@ -136,11 +136,17 @@ class App extends Component {
   };
 
   handleDeleteMovie = (movie) => {
+    const genre = this.state.currentGenre;
     deleteMovie(movie._id);
-    const movies = getMovies();
+    const allMovies = getMovies();
+    let movies = getMovies();
+
+    if (genre != 'all') {
+      movies = getMovies().filter((movie) => movie.genre._id === genre);
+    }
 
     console.log('Movie deleted');
-    this.setState({ movies, allMovies: movies });
+    this.setState({ movies, allMovies });
   };
 
   handleLiked = (movie) => {
