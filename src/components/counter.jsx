@@ -4,20 +4,20 @@ import './counter.css';
 class Counter extends Component {
   constructor(props) {
     super(props);
-    console.log('Counter Constructor: ', this.props);
+    // console.log('Counter Constructor: ', this.props);
   }
 
   componentDidMount() {
     // make Ajax calls to get data
-    console.log('Counter Mounted');
+    // console.log('Counter Mounted');
   }
 
   componentWillUnmount() {
-    console.log('Counter Unmounted');
+    // console.log('Counter Unmounted');
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.counter.value !== this.props.counter.value) {
-      console.log('counter value updated.');
+      // console.log('counter value updated.');
       // do whatever
     }
   }
@@ -26,7 +26,7 @@ class Counter extends Component {
     const { counter, onDecrement, onIncrement, onDelete } = this.props;
     let badgeClasses = this.getBadgeClasses();
     let buttonClasses = this.getButtonClasses();
-    console.log('Counter Rendered');
+    // console.log('Counter Rendered');
 
     return (
       <React.Fragment>

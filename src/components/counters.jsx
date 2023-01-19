@@ -5,18 +5,18 @@ import './counters.css';
 class Counters extends Component {
   constructor(props) {
     super(props);
-    console.log('Counters Constructor: ', this.props);
+    // console.log('Counters Constructor: ', this.props);
   }
 
   componentDidMount() {
     // make Ajax calls to get data
-    console.log('Counters Mounted');
+    // console.log('Counters Mounted');
   }
 
   render() {
     const { counters, onReset, onDelete, onIncrement, onDecrement } =
       this.props;
-    console.log('Counters Rendered');
+    // console.log('Counters Rendered');
 
     return (
       <React.Fragment>

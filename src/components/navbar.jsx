@@ -3,16 +3,16 @@ import React, { Component } from 'react';
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    console.log('NavBar Constructor: ', this.props);
+    // console.log('NavBar Constructor: ', this.props);
   }
   componentDidMount() {
     // make Ajax calls to get data
-    console.log('NavBar Mounted');
+    // console.log('NavBar Mounted');
   }
 
   render() {
     const { totalCounters, totalItems } = this.props;
-    console.log('NavBar Rendered');
+    // console.log('NavBar Rendered');
 
     return (
       <nav className="navbar navbar-expand-sm navbar-light bg-light">

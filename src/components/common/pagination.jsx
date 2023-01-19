@@ -13,7 +13,7 @@ const Pagination = (props) => {
   if (pagesCount === 1) return null;
   const pages = _.range(1, pagesCount + 1);
 
-  console.log(currentPage, '******');
+  // console.log(currentPage, '******');
   return (
     <nav aria-label="Movies">
       <ul className="pagination ">

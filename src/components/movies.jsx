@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 export default class Movies extends Component {
   render() {
-    console.log('Movies Rendered');
+    // console.log('Movies Rendered');
 
     return <React.Fragment>{this.renderMovies()}</React.Fragment>;
   }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Like from './common/like';
 import TableHeader from './common/tableHeader';
+import TableBody from './common/tableBody';
 import PropTypes from 'prop-types';
 
-// force update
 class MoviesTable extends Component {
   columns = [
     { label: 'Title', path: 'title' },
@@ -23,30 +23,12 @@ class MoviesTable extends Component {
           sortPath={sortPath}
           onSort={onSort}
         />
-        <tbody>
-          {movies.map((movie) => (
-            <tr key={movie._id}>
-              <td>{movie.title}</td>
-              <td>{movie.genre.name}</td>
-              <td>{movie.numberInStock}</td>
-              <td>{movie.dailyRentalRate}</td>
-              <td>
-                <Like
-                  liked={movie.liked}
-                  onClick={() => onLiked(movie)}
-                />
-              </td>
-              <td>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => onDelete(movie)}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+        <TableBody
+          data={movies}
+          columns={this.columns}
+          onDelete={onDelete}
+          onLiked={onLiked}
+        />
       </table>
     );
   }

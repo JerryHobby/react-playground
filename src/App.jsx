@@ -21,7 +21,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    console.log('App Constructor: ', this.props);
+    // console.log('App Constructor: ', this.props);
   }
 
   componentDidMount() {
@@ -42,7 +42,7 @@ class App extends Component {
       statusBarItems: statusBarItems,
     });
 
-    console.log('App Mounted');
+    // console.log('App Mounted');
   }
 
   componentDidUpdate(prevProps, prevState) {}
@@ -78,7 +78,7 @@ class App extends Component {
     statusBarItems[4] = { label: 'User', value: 'Jerry' };
     statusBarItems[5] = { label: '', value: dateStr };
 
-    console.log('App Rendered ***********');
+    // console.log('App Rendered ***********');
     let totalItems = 0;
 
     return (
@@ -113,12 +113,12 @@ class App extends Component {
 
     let sortedMovies = _.orderBy(movies, [sortPath.path], [sortPath.order]);
 
-    console.log(' Movies Sorted by', sortPath.path, sortPath.order);
+    // console.log(' Movies Sorted by', sortPath.path, sortPath.order);
     this.setState({ movies: sortedMovies, sortPath: sortPath });
   };
 
   handleGenreChange = (genre) => {
-    console.log('genre selected **********');
+    // console.log('genre selected **********');
     const currentGenre = genre._id;
     const currentPage = 1;
     let movies = [];
@@ -145,12 +145,12 @@ class App extends Component {
       movies = getMovies().filter((movie) => movie.genre._id === genre);
     }
 
-    console.log('Movie deleted');
+    // console.log('Movie deleted');
     this.setState({ movies, allMovies });
   };
 
   handleLiked = (movie) => {
-    console.log('toggle liked');
+    // console.log('toggle liked');
 
     const movies = [...this.state.movies];
     const index = movies.indexOf(movie);
