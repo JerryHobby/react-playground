@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 
+// todo: fix keys
+// todo: fix like
+// todo: fix delete button
 class TableBody extends Component {
   render() {
     const { data, columns, onDelete, onLiked } = this.props;
