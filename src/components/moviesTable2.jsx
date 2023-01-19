@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Like from './common/like';
 import TableHeader from './common/tableHeader';
 import PropTypes from 'prop-types';
+
+// force update
 class MoviesTable extends Component {
   columns = [
     { label: 'Title', path: 'title' },
