@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Like from './like';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 
@@ -13,7 +14,7 @@ class TableBody extends Component {
         {data.map((item) => (
           <tr key={item._id}>
             {columns.map((column) => (
-              <td key={_.get(item, column.label)}>
+              <td key={column.label || column.key}>
                 {_.get(item, column.path)}
               </td>
             ))}
