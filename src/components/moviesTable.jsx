@@ -10,8 +10,28 @@ class MoviesTable extends Component {
     { label: 'Genre', path: 'genre.name' },
     { label: 'Stock', path: 'numberInStock' },
     { label: 'Rate', path: 'dailyRentalRate' },
-    { label: 'Like', path: 'liked', defaultSort: 'desc' },
-    { key: 'delete' },
+    {
+      label: 'Like',
+      path: 'liked',
+      defaultSort: 'desc',
+      content: (movie) => (
+        <Like
+          liked={movie.liked}
+          onLiked={() => this.props.onLiked(movie)}
+        />
+      ),
+    },
+    {
+      key: 'delete',
+      content: (movie) => (
+        <button
+          onClick={() => this.props.onDelete(movie)}
+          className="btn btn-danger btn-sm"
+        >
+          Delete
+        </button>
+      ),
+    },
   ];
 
   render() {
