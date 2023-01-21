@@ -6,15 +6,14 @@ class Like extends Component {
     const { liked, onLiked } = this.props;
 
     if (liked == true) {
-      var likedClass = 'fa fa-heart text-danger';
+      var likedClass = 'fa fa-heart text-danger clickable';
     } else {
-      var likedClass = 'fa fa-heart-o text-muted';
+      var likedClass = 'fa fa-heart-o text-muted clickable';
     }
 
     return (
       <i
         className={likedClass}
-        style={{ cursor: 'pointer' }}
         aria-hidden="true"
         onClick={() => onLiked()}
       ></i>
