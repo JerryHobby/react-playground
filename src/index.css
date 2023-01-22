@@ -1,3 +1,8 @@
+main {
+  background-color: lightgray;
+  border: blueviolet;
+  border-style: dotted;
+}
 .clickable {
   cursor: pointer;
 }

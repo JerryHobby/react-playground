@@ -5,7 +5,6 @@ import _ from 'lodash';
 import { getGenres } from './services/fakeGenreService';
 import { getMovies, deleteMovie } from './services/fakeMovieService';
 import Movies from './components/movies';
-import './App.css';
 
 class App extends Component {
   state = {
@@ -13,7 +12,7 @@ class App extends Component {
     movies: [],
     allMovies: [],
     statusBarItems: [],
-    pageSize: 6,
+    pageSize: 3,
     currentPage: 1,
     currentGenre: 'all',
     sortPath: { path: 'title', order: 'asc' },
