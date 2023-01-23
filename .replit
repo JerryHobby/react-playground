@@ -1,4 +1,4 @@
-run = "vite"
+run = 'cd apps/router-app/;npm start'
 entrypoint = "apps/router-app/src/App.js"
 
 hidden = [".config", "tsconfig.json", "tsconfig.node.json", "vite.config.js", ".gitignore"]
