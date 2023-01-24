@@ -1,7 +1,7 @@
-run = 'cd apps/router-app/;npm run dev'
-entrypoint = "apps/router-app/src/App.js"
+run = 'cd apps/vidly/;npm run dev'
+entrypoint = "apps/router-app/src/App.jsx"
 
-hidden = [".config", "tsconfig.json", "tsconfig.node.json", "vite.config.js", ".gitignore"]
+xhidden = [".config", "tsconfig.json", "tsconfig.node.json", "vite.config.js", ".gitignore"]
 
 [nix]
 channel = "stable-22_11"
@@ -62,7 +62,7 @@ type = "request"
 console = "externalTerminal"
 cwd = "."
 pauseForSourceMap = false
-program = "./index.js"
+program = "./index.jsx"
 request = "launch"
 sourceMaps = true
 stopOnEntry = false
