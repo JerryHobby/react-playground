@@ -1,7 +1,7 @@
 run = 'cd apps/vidly/;npm run dev'
 entrypoint = "apps/router-app/src/App.jsx"
 
-xhidden = [".config", "tsconfig.json", "tsconfig.node.json", "vite.config.js", ".gitignore"]
+hidden = [".config", ".git", "tsconfig.json", "tsconfig.node.json", "vite.config.js", ".gitignore"]
 
 [nix]
 channel = "stable-22_11"
