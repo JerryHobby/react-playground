@@ -1,4 +1,4 @@
-run = 'cd apps/vidly/;npm run dev'
+run = 'cd apps/router-app/;npm run dev'
 entrypoint = "apps/router-app/src/App.jsx"
 
 hidden = [".config", ".git", "tsconfig.json", "tsconfig.node.json", "vite.config.js", ".gitignore"]
