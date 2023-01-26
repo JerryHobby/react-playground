@@ -4,6 +4,7 @@
     npm i font-awesome
     npm i lodash
     npm i prop-types
+    npm i react-router-dom
     npm i
 
     npm run dev
