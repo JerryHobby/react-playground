@@ -1,19 +1,35 @@
 import React, { Component } from 'react';
 import { useParams } from 'react-router-dom';
 
-class ProductDetails extends Component {
-  handleSave = () => {
+  const handleSave = () => {
     // Navigate to /products
   };
 
-  render() {
-    return (
-      <div>
-        <h1>Product Details -</h1>
-        <button onClick={this.handleSave}>Save</button>
-      </div>
-    );
-  }
-}
+const ProductDetails = (props) => {
+
+  let parms = useParams();
+  console.log(parms, props);
+  
+  return(      
+    <div>
+        <h1>Product Details - {parms.id}</h1>
+        <button onClick={handleSave}>Save</button>
+      </div>);
+};
+
+// class ProductDetails extends Component {
+
+//   render() {
+  // handleSave = () => {
+  //   // Navigate to /products
+  // };
+//     return (
+//       <div>
+//         <h1>Product Details - {ProductID()}</h1>
+//         <button onClick={this.handleSave}>Save</button>
+//       </div>
+//     );
+//   }
+// }
 
 export default ProductDetails;
