@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 const ProductDetails = (props) => {
 
   let parms = useParams();
-  console.log(parms, props);
+  console.log(parms);
   
   return(      
     <div>
