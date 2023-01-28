@@ -1,28 +1,30 @@
 import React, { Component } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useMatch } from 'react-router-dom';
 
-  const handleSave = () => {
-    // Navigate to /products
-  };
+const handleSave = () => {
+  // Navigate to /products
+};
 
-const ProductDetails = (props) => {
+const ProductDetails = () => {
+  let params = useParams();
+  // let match = useMatch();
+  console.log(params);
+  //  console.log(match);
 
-  let parms = useParams();
-  console.log(parms);
-  
-  return(      
+  return (
     <div>
-        <h1>Product Details - {parms.id}</h1>
-        <button onClick={handleSave}>Save</button>
-      </div>);
+      <h1>Product Details - {params.id}</h1>
+      <button onClick={handleSave}>Save</button>
+    </div>
+  );
 };
 
 // class ProductDetails extends Component {
 
 //   render() {
-  // handleSave = () => {
-  //   // Navigate to /products
-  // };
+// handleSave = () => {
+//   // Navigate to /products
+// };
 //     return (
 //       <div>
 //         <h1>Product Details - {ProductID()}</h1>

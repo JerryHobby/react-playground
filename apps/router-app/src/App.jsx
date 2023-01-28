@@ -17,11 +17,7 @@ class App extends Component {
         <div className="content">
           <Routes>
             <Route
-              path="/products/:id/:query"
-              element={<ProductDetails />}
-            />
-            <Route
-              path="/products/:id"
+              path="/products/:id/:testvar?"
               element={<ProductDetails />}
             />
             <Route
@@ -29,7 +25,7 @@ class App extends Component {
               element={<Products sortBy="newest" />}
             />
             <Route
-              path="/posts/:year/:month"
+              path="/posts/:year?/:month?"
               element={<Posts />}
             />
             <Route
