@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const NotFound = () => {
+const NotFound = (props) => {
   return <h1>Not Found</h1>;
 };
 

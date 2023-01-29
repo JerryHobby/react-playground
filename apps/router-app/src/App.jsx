@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './components/navbar';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Products from './components/products';
 import Posts from './components/posts';
 import Home from './components/home';
@@ -18,15 +18,20 @@ class App extends Component {
           <Routes>
             <Route
               path="/products/:id/:testvar?"
-              element={<ProductDetails />}
+              element={<ProductDetails {...this.props} />}
             />
             <Route
               path="/products"
-              element={<Products sortBy="newest" />}
+              element={
+                <Products
+                  {...this.props}
+                  sortBy="newest"
+                />
+              }
             />
             <Route
               path="/posts/:year?/:month?"
-              element={<Posts />}
+              element={<Posts {...this.props} />}
             />
             <Route
               path="/posts"
@@ -39,6 +44,15 @@ class App extends Component {
             <Route
               path="/"
               element={<Home />}
+            />
+            <Route
+              path="/messages"
+              element={<Navigate to="/posts" />}
+            />
+            <Route
+              path="*"
+              element={<NotFound {...this.props} />}
+              //element={<Navigate to="/" />}
             />
           </Routes>
         </div>

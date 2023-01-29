@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import { useParams, useMatch } from 'react-router-dom';
-
-const handleSave = () => {
-  // Navigate to /products
-};
+import { useParams, useMatch, useNavigate } from 'react-router-dom';
 
 const ProductDetails = () => {
-  let params = useParams();
-  // let match = useMatch();
+  const params = useParams();
+  const navigate = useNavigate();
+  //const match = useMatch();
+
   console.log(params);
-  //  console.log(match);
+
+  const handleSave = () => {
+    console.log('SAVING');
+    // Navigate to /products
+    navigate('/products', 'replace');
+  };
 
   return (
     <div>
