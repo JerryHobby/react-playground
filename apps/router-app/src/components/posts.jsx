@@ -15,6 +15,9 @@ const Posts = () => {
     <div>
       <h1>Posts</h1>
       Year: {params.year} , Month: {params.month}
+      Query: {query['a']}, {query['b']}
+
+
     </div>
   );
 };
