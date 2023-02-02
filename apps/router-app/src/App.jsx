@@ -38,7 +38,7 @@ class App extends Component {
               element={<Posts />}
             />
             <Route
-              path="/admin"
+              path="/admin/*"
               element={<Dashboard />}
             />
             <Route
