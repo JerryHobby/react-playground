@@ -11,11 +11,11 @@ const Dashboard = ({ match }) => {
       <SideBar />
       <Routes>
         <Route
-          path="/admin/users"
+          path="/users"
           element={<Users />}
         />
         <Route
-          path="/admin/posts"
+          path="/posts"
           element={<Posts />}
         />
       </Routes>

@@ -2,24 +2,26 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
+  const rowClass = 'row bg-light'
+  const colClass = 'col link-light'
   return (
-    <ul>
-      <li>
+    <div className={rowClass}>
+      <div className={colClass}>
         <Link to="/">Home</Link>
-      </li>
-      <li>
+      </div>
+      <div className={colClass}>
         <Link to="/products">Products</Link>
-      </li>
-      <li>
+      </div>
+      <div className={colClass}>
         <Link to="/products/3/testvar='hello world'">Sample Product</Link>
-      </li>
-      <li>
+      </div>
+      <div className={colClass}>
         <Link to="/posts/2018/12?a=1&b=2">Posts</Link>
-      </li>
-      <li>
+      </div>
+      <div className={colClass}>
         <Link to="/admin">Admin</Link>
-      </li>
-    </ul>
+      </div>
+    </div>
   );
 };
 
