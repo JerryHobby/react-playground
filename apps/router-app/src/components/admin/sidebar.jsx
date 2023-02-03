@@ -2,15 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SideBar = () => {
+  const rowClass = 'navbar navbar-expand-sm navbar-light bg-light';
+  const colClass = 'col-1 collapse navbar-collapse link-light';
   return (
-    <ul>
-      <li>
+    <div className={rowClass}>
+      <div className={colClass}>
         <Link to="/admin/posts">Posts</Link>
-      </li>
-      <li>
+      </div>
+      <div className={colClass}>
         <Link to="/admin/users">Users</Link>
-      </li>
-    </ul>
+      </div>
+      <div className="col-10" />
+    </div>
   );
 };
 export default SideBar;
