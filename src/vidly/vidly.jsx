@@ -6,7 +6,7 @@ import { getGenres } from './services/fakeGenreService';
 import { getMovies, deleteMovie } from './services/fakeMovieService';
 import Movies from './components/movies';
 
-class App extends Component {
+class Vidly extends Component {
   state = {
     genres: [],
     movies: [],
@@ -83,7 +83,6 @@ class App extends Component {
     return (
       <React.Fragment>
         <StatusBar items={statusBarItems} />
-        <NavBar />
         <main className="container">
           <Movies
             genres={genres}
@@ -160,4 +159,4 @@ class App extends Component {
   };
 }
 
-export default App;
+export default Vidly;
