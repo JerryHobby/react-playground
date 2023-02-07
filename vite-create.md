@@ -1,3 +1,5 @@
+  
+    
     npm create vite
 
     npm i bootstrap
@@ -9,7 +11,7 @@
 
     npm run dev
 
-vite.config
+vite.config 
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
