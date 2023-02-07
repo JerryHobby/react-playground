@@ -8,7 +8,7 @@ import Dashboard from './components/admin/dashboard';
 import ProductDetails from './components/productDetails';
 import NotFound from './components/notFound';
 import Vidly from './vidly/vidly';
-
+import CallJournal from './call-journal/CallJournal';
 class App extends Component {
   render() {
     return (
@@ -48,6 +48,10 @@ class App extends Component {
             <Route
               path="/vidly"
               element={<Vidly />}
+            />
+            <Route
+              path="/calljournal"
+              element={<CallJournal />}
             />
             <Route
               path="/messages"
