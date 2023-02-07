@@ -1,6 +1,7 @@
 body {
-    padding: 0px;
+  padding: 0px;
   margin: 0px;
+  max-width: 100%;
 }
 .App {
   text-align: center;
@@ -27,6 +28,10 @@ body {
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

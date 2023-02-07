@@ -5,7 +5,13 @@ import _ from 'lodash';
 import { getGenres } from './services/fakeGenreService';
 import { getMovies, deleteMovie } from './services/fakeMovieService';
 import Movies from './components/movies';
-
+import MoviesTable from './components/moviesTable';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Customers from './components/customers';
+import MovieForm from './components/movieForm';
+import Rentals from './components/rentals';
+import NotFound from './components/notFound';
+import Home from './components/home';
 class Vidly extends Component {
   state = {
     genres: [],
@@ -82,21 +88,62 @@ class Vidly extends Component {
 
     return (
       <React.Fragment>
-        <StatusBar items={statusBarItems} />
-        <main className="container">
-          <Movies
-            genres={genres}
-            movies={movies}
-            pageSize={pageSize}
-            currentPage={currentPage}
-            currentGenre={currentGenre}
-            onDelete={this.handleDeleteMovie}
-            onLiked={this.handleLiked}
-            onPageChange={this.handlePageChange}
-            onGenreChange={this.handleGenreChange}
-            onSort={this.handleSort}
-            sortPath={sortPath}
-          />
+        <main className="container gx-0">
+          <StatusBar items={statusBarItems} />
+          <NavBar />
+          <Routes>
+            <Route
+              path="movies"
+              element={
+                <Movies
+                  genres={genres}
+                  movies={movies}
+                  pageSize={pageSize}
+                  currentPage={currentPage}
+                  currentGenre={currentGenre}
+                  onDelete={this.handleDeleteMovie}
+                  onLiked={this.handleLiked}
+                  onPageChange={this.handlePageChange}
+                  onGenreChange={this.handleGenreChange}
+                  onSort={this.handleSort}
+                  sortPath={sortPath}
+                />
+              }
+            />
+            <Route
+              path="moviestable"
+              element={
+                <MoviesTable
+                  movies={movies}
+                  onDelete={this.handleDeleteMovie}
+                  onLiked={this.handleLiked}
+                  onSort={this.handleSort}
+                  sortPath={sortPath}
+                />
+              }
+            />
+            <Route
+              path="movieform"
+              element={<MovieForm />}
+            />
+            <Route
+              path="customers"
+              element={<Customers />}
+            />
+            <Route
+              path="rentals"
+              element={<Rentals />}
+            />
+            <Route
+              path="/"
+              element={<Home />}
+            />
+            <Route
+              path="*"
+              element={<NotFound {...this.props} />}
+              //element={<Navigate to="/" />}
+            />
+          </Routes>
         </main>
       </React.Fragment>
     );

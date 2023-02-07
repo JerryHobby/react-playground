@@ -1,73 +1,63 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-class NavBar extends Component {
-  constructor(props) {
-    super(props);
-    // console.log('NavBar Constructor: ', this.props);
-  }
-  componentDidMount() {
-    // make Ajax calls to get data
-    // console.log('NavBar Mounted');
-  }
+const NavBar = () => {
+  const rowClass = 'row bg-secondary';
+  const colClass = 'col';
+  const linkClass = 'text-decoration-none link-light';
+  return (
+    <div className={rowClass}>
+      <div className={colClass}>
+        <Link
+          to="/vidly"
+          className={linkClass}
+        >
+          Home
+        </Link>
+      </div>
+      <div className={colClass}>
+        <Link
+          to="movies"
+          className={linkClass}
+        >
+          Movies
+        </Link>
+      </div>
+      <div className={colClass}>
+        <Link
+          to="moviestable"
+          className={linkClass}
+        >
+          Movies Table
+        </Link>
+      </div>
+      <div className={colClass}>
+        <Link
+          to="rentals"
+          className={linkClass}
+        >
+          Rentals
+        </Link>
+      </div>
+      <div className={colClass}>
+        <Link
+          to="customers"
+          className={linkClass}
+        >
+          Customers
+        </Link>
+      </div>
 
-  render() {
-    const { totalCounters, totalItems } = this.props;
-    // console.log('NavBar Rendered');
-
-    return (
-      <nav className="navbar navbar-expand-sm navbar-light bg-light">
-        <a
-          className="navbar-brand"
-          href="#"
+      <div className={colClass}>
+        <Link
+          to="movieform"
+          className={linkClass}
         >
-          Navbar
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div
-          className="collapse navbar-collapse"
-          id="navbarNavAltMarkup"
-        >
-          <div className="navbar-nav">
-            <a
-              className="nav-item nav-link active"
-              href="#"
-            >
-              Home <span className="sr-only">(current)</span>
-            </a>
-            <a
-              className="nav-item nav-link"
-              href="#"
-              onClick={() => window.location.reload()}
-            >
-              Reload
-            </a>
-            <a
-              className="nav-item nav-link"
-              href="#"
-            >
-              Unused
-            </a>
-            <a
-              className="nav-item nav-link disabled"
-              href="#"
-            >
-              Disabled
-            </a>
-          </div>
-        </div>
-      </nav>
-    );
-  }
-}
+          Movie Form
+        </Link>
+      </div>
+    </div>
+  );
+};
 
 export default NavBar;

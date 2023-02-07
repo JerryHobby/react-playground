@@ -17,11 +17,11 @@ class StatusBar extends Component {
     // console.log(items);
 
     return (
-      <div className="row m-0 p-0">
+      <div className="row">
         {items.map((item) => (
           <div
             key={item.label}
-            className="col m-0 pl-1 pr-1 text-info bg-dark border-end border-white"
+            className="col text-info bg-dark  border-white"
           >
             {item.label}
             {item.label.length ? ': ' : ''}

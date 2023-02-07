@@ -46,7 +46,7 @@ class App extends Component {
               element={<Home />}
             />
             <Route
-              path="/vidly"
+              path="/vidly/*"
               element={<Vidly />}
             />
             <Route
