@@ -37,17 +37,17 @@ const NavBar = () => {
         </div>
       </nav>
       <div
-        class="tab-content"
+        className="tab-content"
         id="nav-tabContent"
       >
         <div
-          class="tab-pane fade show active"
+          className="tab-pane fade show active"
           id="nav-vidly"
           role="tabpanel"
           aria-labelledby="nav-vidley-tab"
         ></div>
         <div
-          class="tab-pane fade"
+          className="tab-pane fade"
           id="nav-calljounal"
           role="tabpanel"
           aria-labelledby="nav-calljounal-tab"

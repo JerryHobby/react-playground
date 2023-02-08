@@ -63,25 +63,25 @@ const NavBar = () => {
         id="nav-tabContent"
       >
         <div
-          class="tab-pane fade show active"
+          className="tab-pane fade show active"
           id="nav-home"
           role="tabpanel"
           aria-labelledby="nav-home-tab"
         ></div>
         <div
-          class="tab-pane fade"
+          className="tab-pane fade"
           id="nav-movies"
           role="tabpanel"
           aria-labelledby="nav-movies-tab"
         ></div>
         <div
-          class="tab-pane fade"
+          className="tab-pane fade"
           id="nav-rentals"
           role="tabpanel"
           aria-labelledby="nav-rentals-tab"
         ></div>
         <div
-          class="tab-pane fade"
+          className="tab-pane fade"
           id="nav-customers"
           role="tabpanel"
           aria-labelledby="nav-customers-tab"
