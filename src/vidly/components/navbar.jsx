@@ -59,7 +59,7 @@ const NavBar = () => {
         </div>
       </nav>
       <div
-        class="tab-content"
+        className="tab-content"
         id="nav-tabContent"
       >
         <div
