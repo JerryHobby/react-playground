@@ -6,7 +6,7 @@ const NavBar = () => {
   const linkClass = 'nav-item nav-link';
   return (
     <React.Fragment>
-      <nav>
+      <nav className="vidlynavbar">
         <div
           className={navClass}
           id="nav-tab"

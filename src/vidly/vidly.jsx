@@ -12,6 +12,7 @@ import MovieForm from './components/movieForm';
 import Rentals from './components/rentals';
 import NotFound from './components/notFound';
 import Home from './components/home';
+import './index.css';
 class Vidly extends Component {
   state = {
     genres: [],
