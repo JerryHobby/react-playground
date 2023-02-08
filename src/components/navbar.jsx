@@ -1,70 +1,59 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const NavBar = () => {
-  const rowClass = 'row bg-primary';
-  const colClass = 'col';
-  const linkClass = 'text-decoration-none link-light';
+  const navClass = 'nav nav-tabs bg-secondary';
+  const linkClass = 'nav-item nav-link text-black';
   return (
-    <div className={rowClass}>
-      <div className={colClass}>
-        <Link
-          to="/"
-          className={linkClass}
+    <React.Fragment>
+      <nav>
+        <div
+          className={navClass}
+          id="nav-tab"
+          role="tablist"
         >
-          Home
-        </Link>
+          <NavLink
+            className={linkClass}
+            id="nav-home-tab"
+            data-toggle="tab"
+            to="/vidly"
+            role="tab"
+            aria-controls="nav-vidly"
+            aria-selected="trfalseue"
+          >
+            Vidly
+          </NavLink>
+          <NavLink
+            className={linkClass}
+            id="nav-calljournal-tab"
+            data-toggle="tab"
+            to="calljournal"
+            role="tab"
+            aria-controls="nav-calljounal"
+            aria-selected="false"
+          >
+            Call Journal
+          </NavLink>
+        </div>
+      </nav>
+      <div
+        class="tab-content"
+        id="nav-tabContent"
+      >
+        <div
+          class="tab-pane fade show active"
+          id="nav-vidly"
+          role="tabpanel"
+          aria-labelledby="nav-vidley-tab"
+        ></div>
+        <div
+          class="tab-pane fade"
+          id="nav-calljounal"
+          role="tabpanel"
+          aria-labelledby="nav-calljounal-tab"
+        ></div>
       </div>
-      <div className={colClass}>
-        <Link
-          to="/products"
-          className={linkClass}
-        >
-          Products
-        </Link>
-      </div>
-      <div className={colClass}>
-        <Link
-          to="/products/3/testvar='hello world'"
-          className={linkClass}
-        >
-          Sample Product
-        </Link>
-      </div>
-      <div className={colClass}>
-        <Link
-          to="/posts/2018/12?a=1&b=2"
-          className={linkClass}
-        >
-          Posts
-        </Link>
-      </div>
-      <div className={colClass}>
-        <Link
-          to="/vidly"
-          className={linkClass}
-        >
-          Vidly
-        </Link>
-      </div>
-      <div className={colClass}>
-        <Link
-          to="/calljournal"
-          className={linkClass}
-        >
-          Call Journal
-        </Link>
-      </div>
-      <div className={colClass}>
-        <Link
-          to="/admin"
-          className={linkClass}
-        >
-          Admin
-        </Link>
-      </div>
-      <div className="col-4" />
-    </div>
+    </React.Fragment>
   );
 };
 
